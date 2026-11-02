@@ -123,7 +123,7 @@ export default function Home() {
             Resolve Holding is a privately owned company that brings practical
             technology to Lebanon. We build every solution ourselves, from the
             stations behind Voltbox to the software behind Cloak and
-            Formula Solutions, so we control quality, security and support from end to
+            Formula, so we control quality, security and support from end to
             end.
           </p>
           <ul className="mt-16 grid border-t border-black/10 md:grid-cols-3">
