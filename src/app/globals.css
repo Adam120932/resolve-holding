@@ -115,21 +115,6 @@ body {
   }
 }
 
-/* Scrolling ticker between sections. */
-.ticker {
-  display: flex;
-  width: max-content;
-  animation: ticker 38s linear infinite;
-}
-.ticker-wrap:hover .ticker {
-  animation-play-state: paused;
-}
-@keyframes ticker {
-  to {
-    transform: translateX(-50%);
-  }
-}
-
 /* Solution cards: a white panel wipes up from the bottom on hover. */
 .card {
   position: relative;
@@ -189,8 +174,7 @@ a:hover > .nudge {
   }
   .rise > span,
   .fade-in,
-  .hero-mark path,
-  .ticker {
+  .hero-mark path {
     animation: none;
   }
   .hero-mark path {

@@ -23,12 +23,6 @@ const label = "text-[12px] tracking-[0.32em] uppercase";
 // Stagger index for CSS animations (see globals.css).
 const d = (n: number) => ({ "--d": n }) as CSSProperties;
 
-const tickerWords = [
-  ...solutions.map((s) => s.title),
-  "Built in Lebanon",
-  "Built in-house",
-];
-
 export default function Home() {
   return (
     <main className="flex-1 scroll-mt-16">
@@ -90,36 +84,7 @@ export default function Home() {
         </ul>
       </section>
 
-      {/* Ticker */}
-      <div
-        className="ticker-wrap overflow-hidden border-y border-white/10 bg-black/40 py-5 backdrop-blur-[2px]"
-        aria-hidden="true"
-      >
-        <div className="ticker">
-          {[0, 1].map((copy) => (
-            <ul key={copy} className="flex shrink-0 items-center">
-              {[...tickerWords, ...tickerWords].map((word, i) => (
-                <li
-                  key={`${copy}-${i}`}
-                  className="flex items-center gap-10 pr-10 font-display text-2xl font-extrabold tracking-tight whitespace-nowrap text-white/80 sm:text-3xl"
-                >
-                  {word}
-                  <svg
-                    viewBox="0 0 100 100"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth={12}
-                    strokeLinecap="square"
-                    className="h-5 w-5 shrink-0 text-white/40"
-                  >
-                    <path d="M10 14C46 14 50 50 90 50M10 50H90M10 86C46 86 50 50 90 50" />
-                  </svg>
-                </li>
-              ))}
-            </ul>
-          ))}
-        </div>
-      </div>
+      <div className="h-px w-full bg-white/10" />
 
       {/* Solutions */}
       <section id="solutions" className="mx-auto w-full max-w-6xl scroll-mt-16 px-6 py-24">
