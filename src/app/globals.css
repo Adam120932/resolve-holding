@@ -110,9 +110,6 @@ body {
 }
 
 /* Large hero mark: the three lines draw themselves, then breathe. */
-.hero-mark {
-  transform: translateY(calc(var(--sy, 0) * -0.18px));
-}
 .hero-mark path {
   stroke-dasharray: 1;
   stroke-dashoffset: 1;
@@ -205,9 +202,6 @@ a:hover > .nudge {
   }
   .hero-mark path {
     stroke-dashoffset: 0;
-  }
-  .hero-mark {
-    transform: none;
   }
   .card::before,
   .card .card-arrow,

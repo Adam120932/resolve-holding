@@ -28,31 +28,34 @@ export default function Home() {
     <main className="flex-1 scroll-mt-[4.5rem]">
       {/* Hero */}
       <section className="relative wrap flex min-h-[calc(100svh-4.5rem)] flex-col justify-center py-20 sm:py-24">
-        <svg
-          viewBox="0 0 100 100"
-          fill="none"
-          stroke="currentColor"
-          strokeWidth={4}
-          strokeLinecap="square"
-          aria-hidden="true"
-          className="hero-mark pointer-events-none absolute top-1/2 right-[clamp(1.5rem,4vw,4rem)] hidden h-[min(27vw,520px)] w-[min(27vw,520px)] -translate-y-1/2 text-white lg:block"
-        >
-          <path pathLength={1} d="M10 14C46 14 50 50 90 50" />
-          <path pathLength={1} d="M10 50H90" />
-          <path pathLength={1} d="M10 86C46 86 50 50 90 50" />
-        </svg>
-
         <p className={`fade-in mb-8 text-white/60 ${label}`} style={d(0)}>
           Resolve Holding · Lebanon
         </p>
-        <h1 className="max-w-[14ch] font-display font-extrabold text-[clamp(3rem,6.6vw,8rem)] leading-[0.98] tracking-[-0.035em]">
-          <span className="rise">
-            <span style={d(0)}>Technology,</span>
-          </span>
-          <span className="rise">
-            <span style={d(1)}>built for Lebanon.</span>
-          </span>
-        </h1>
+        {/* Headline and mark share one row at the same font size, so the
+            mark is exactly as tall as the two lines of text and centred on them. */}
+        <div className="flex items-center justify-between gap-12 text-[clamp(3rem,6.6vw,8rem)]">
+          <h1 className="max-w-[14ch] font-display font-extrabold leading-[0.98] tracking-[-0.035em]">
+            <span className="rise">
+              <span style={d(0)}>Technology,</span>
+            </span>
+            <span className="rise">
+              <span style={d(1)}>built for Lebanon.</span>
+            </span>
+          </h1>
+          <svg
+            viewBox="6.5 10.5 87 79"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth={7}
+            strokeLinecap="square"
+            aria-hidden="true"
+            className="hero-mark pointer-events-none hidden h-[1.66em] w-auto shrink-0 text-white lg:block"
+          >
+            <path pathLength={1} d="M10 14C46 14 50 50 90 50" />
+            <path pathLength={1} d="M10 50H90" />
+            <path pathLength={1} d="M10 86C46 86 50 50 90 50" />
+          </svg>
+        </div>
         <p
           className="fade-in mt-10 max-w-2xl text-lg leading-8 text-white/60 sm:text-xl sm:leading-9"
           style={d(2)}
