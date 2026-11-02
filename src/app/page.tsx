@@ -1,80 +1,110 @@
 import Link from "next/link";
+import { SolutionIcon } from "@/components/solution-icon";
 import { solutions } from "@/data/solutions";
+
+const principles = [
+  {
+    title: "Built in-house",
+    body: "Every product is designed and developed by our own team. Nothing is white-labelled or resold.",
+  },
+  {
+    title: "Made for local conditions",
+    body: "Designed around real life in Lebanon, including unpredictable power and uneven connectivity.",
+  },
+  {
+    title: "One group, one standard",
+    body: "Charge, Cloak and AI share the same commitment to reliability, privacy and support.",
+  },
+];
+
+const label = "text-[12px] tracking-[0.32em] uppercase";
 
 export default function Home() {
   return (
-    <main className="flex-1">
+    <main className="flex-1 scroll-mt-16">
+      {/* Hero */}
       <section className="mx-auto max-w-6xl px-6 pt-20 pb-24 sm:pt-28 sm:pb-32">
-        <p className="mb-8 text-[12px] tracking-[0.32em] text-black/45">
-          LEBANON
-        </p>
-        <h1 className="max-w-4xl font-serif text-[2.75rem] leading-[1.05] tracking-tight sm:text-6xl lg:text-7xl">
-          Technical solutions,
+        <p className={`mb-8 text-white/60 ${label}`}>Resolve Holding · Lebanon</p>
+        <h1 className="max-w-4xl font-display font-extrabold text-balance text-[2.75rem] leading-[1.05] tracking-tight sm:text-6xl lg:text-7xl">
+          Technology,
           <br />
-          held in one place.
+          built for Lebanon.
         </h1>
-        <p className="mt-8 max-w-xl text-base leading-7 text-black/60 sm:text-lg">
-          Voltbox is a host for the systems that will reshape how the country
-          works — energy, civic life, identity, logistics, knowledge, and care.
+        <p className="mt-8 max-w-xl text-base leading-7 text-white/60 sm:text-lg">
+          Resolve Holding is a privately owned group that develops and runs
+          technology services for everyday life in Lebanon: power on the go,
+          private internet access and AI automation, all built in-house.
         </p>
         <div className="mt-12 flex flex-wrap items-center gap-4">
           <a
             href="#solutions"
-            className="inline-flex h-11 items-center bg-black px-6 text-[13px] tracking-[0.16em] text-white transition-opacity hover:opacity-80"
+            className="inline-flex h-11 items-center bg-white px-6 text-[13px] tracking-[0.16em] text-black transition-opacity hover:opacity-80"
           >
-            VIEW SOLUTIONS
-          </a>
-          <a
-            href="#purpose"
-            className="inline-flex h-11 items-center border border-black px-6 text-[13px] tracking-[0.16em] transition-colors hover:bg-black hover:text-white"
-          >
-            PURPOSE
+            EXPLORE SOLUTIONS
           </a>
         </div>
+        <ul className="mt-16 flex flex-wrap gap-x-10 gap-y-4 text-[12px] tracking-[0.22em]">
+          {solutions.map((solution) => (
+            <li key={solution.slug}>
+              <Link
+                href={`/solutions/${solution.slug}`}
+                className="inline-flex items-center gap-2.5 text-white/60 transition-colors hover:text-white"
+              >
+                <SolutionIcon slug={solution.slug} className="h-4 w-4 text-white" />
+                {solution.category.toUpperCase()}
+              </Link>
+            </li>
+          ))}
+        </ul>
       </section>
 
-      <div className="h-px w-full bg-black/10" />
+      <div className="h-px w-full bg-white/10" />
 
-      <section id="solutions" className="mx-auto max-w-6xl px-6 py-24">
+      {/* Solutions */}
+      <section id="solutions" className="mx-auto max-w-6xl scroll-mt-16 px-6 py-24">
         <div className="mb-16 flex flex-col justify-between gap-4 sm:flex-row sm:items-end">
           <div>
-            <p className="mb-3 text-[12px] tracking-[0.32em] text-black/45">
-              00 — INDEX
-            </p>
-            <h2 className="font-serif text-4xl tracking-tight sm:text-5xl">
-              Solutions
+            <p className={`mb-3 text-white/60 ${label}`}>Solutions</p>
+            <h2 className="font-display font-extrabold text-balance text-4xl tracking-tight sm:text-5xl">
+              Three solutions, one standard.
             </h2>
           </div>
-          <p className="max-w-sm text-sm leading-6 text-black/50">
-            Each entry is a living brief. Details will land as the work is
-            named.
+          <p className="max-w-sm text-sm leading-6 text-white/60">
+            Each solution is designed, built and run by our own team. All three
+            are currently in development.
           </p>
         </div>
 
-        <ul className="grid border-t border-black/10 sm:grid-cols-2">
+        <ul className="grid border-t border-white/10 lg:grid-cols-3">
           {solutions.map((solution) => (
             <li
               key={solution.slug}
-              className="border-b border-black/10 sm:odd:border-r"
+              className="border-b border-white/10 lg:border-r lg:last:border-r-0"
             >
               <Link
                 href={`/solutions/${solution.slug}`}
-                className="group flex h-full flex-col gap-8 p-8 transition-colors hover:bg-black hover:text-white"
+                className="group flex h-full flex-col gap-8 p-8 transition-colors hover:bg-white hover:text-black"
               >
-                <div className="flex items-baseline justify-between text-[12px] tracking-[0.22em] text-black/40 group-hover:text-white/50">
-                  <span>{solution.index}</span>
-                  <span>{solution.status}</span>
+                <div className="flex items-center justify-between text-[12px] tracking-[0.22em] text-white/60 group-hover:text-black/60">
+                  <SolutionIcon
+                    slug={solution.slug}
+                    className="h-7 w-7 text-white group-hover:text-black"
+                  />
+                  <span>{solution.status.toUpperCase()}</span>
                 </div>
                 <div>
-                  <h3 className="font-serif text-3xl tracking-tight">
+                  <p className="mb-3 text-[12px] tracking-[0.22em] text-white/60 group-hover:text-black/60">
+                    {solution.category.toUpperCase()}
+                  </p>
+                  <h3 className="font-display font-bold text-3xl tracking-tight">
                     {solution.title}
                   </h3>
-                  <p className="mt-4 max-w-md text-sm leading-6 text-black/55 group-hover:text-white/70">
+                  <p className="mt-4 max-w-md text-sm leading-6 text-white/60 group-hover:text-black/70">
                     {solution.summary}
                   </p>
                 </div>
                 <span className="mt-auto text-[12px] tracking-[0.2em]">
-                  OPEN →
+                  LEARN MORE →
                 </span>
               </Link>
             </li>
@@ -82,19 +112,38 @@ export default function Home() {
         </ul>
       </section>
 
-      <section id="purpose" className="bg-black text-white">
+      {/* About */}
+      <section id="about" className="scroll-mt-16 bg-white text-black">
         <div className="mx-auto max-w-6xl px-6 py-24 sm:py-32">
-          <p className="mb-6 text-[12px] tracking-[0.32em] text-white/40">
-            PURPOSE
-          </p>
-          <h2 className="max-w-3xl font-serif text-4xl leading-[1.1] tracking-tight sm:text-5xl">
-            The brief is not public yet.
+          <p className={`mb-6 text-black/60 ${label}`}>About</p>
+          <h2 className="max-w-3xl font-display font-extrabold text-balance text-4xl leading-[1.1] tracking-tight sm:text-5xl">
+            Built here, for the way Lebanon works.
           </h2>
-          <p className="mt-8 max-w-lg text-base leading-7 text-white/55">
-            This site exists to hold the work as it takes form. The mission,
-            partners, and launch sequence will be published here when they are
-            ready.
+          <p className="mt-8 max-w-2xl text-base leading-7 text-black/60">
+            Resolve Holding is a privately owned company that brings practical
+            technology to Lebanon. We build every solution ourselves, from the
+            stations behind Voltbox to the software behind Cloak and
+            Voltbox AI, so we control quality, security and support from end to
+            end.
           </p>
+          <ul className="mt-16 grid border-t border-black/10 md:grid-cols-3">
+            {principles.map((principle, i) => (
+              <li
+                key={principle.title}
+                className="border-b border-black/10 py-8 md:border-r md:px-8 md:first:pl-0 md:last:border-r-0"
+              >
+                <span className="text-[12px] tracking-[0.22em] text-black/60">
+                  {String(i + 1).padStart(2, "0")}
+                </span>
+                <h3 className="mt-4 font-display font-bold text-2xl tracking-tight">
+                  {principle.title}
+                </h3>
+                <p className="mt-3 text-sm leading-6 text-black/60">
+                  {principle.body}
+                </p>
+              </li>
+            ))}
+          </ul>
         </div>
       </section>
     </main>
