@@ -18,16 +18,16 @@ const principles = [
   },
 ];
 
-const label = "text-[12px] tracking-[0.32em] uppercase";
+const label = "text-[0.8125rem] tracking-[0.32em] uppercase";
 
 // Stagger index for CSS animations (see globals.css).
 const d = (n: number) => ({ "--d": n }) as CSSProperties;
 
 export default function Home() {
   return (
-    <main className="flex-1 scroll-mt-16">
+    <main className="flex-1 scroll-mt-[4.5rem]">
       {/* Hero */}
-      <section className="relative mx-auto w-full max-w-6xl px-6 pt-20 pb-24 sm:pt-28 sm:pb-32">
+      <section className="relative wrap flex min-h-[calc(100svh-4.5rem)] flex-col justify-center py-20 sm:py-24">
         <svg
           viewBox="0 0 100 100"
           fill="none"
@@ -35,7 +35,7 @@ export default function Home() {
           strokeWidth={4}
           strokeLinecap="square"
           aria-hidden="true"
-          className="hero-mark pointer-events-none absolute top-24 right-6 hidden h-[360px] w-[360px] text-white lg:block"
+          className="hero-mark pointer-events-none absolute top-1/2 right-[clamp(1.5rem,4vw,4rem)] hidden h-[min(27vw,520px)] w-[min(27vw,520px)] -translate-y-1/2 text-white lg:block"
         >
           <path pathLength={1} d="M10 14C46 14 50 50 90 50" />
           <path pathLength={1} d="M10 50H90" />
@@ -45,7 +45,7 @@ export default function Home() {
         <p className={`fade-in mb-8 text-white/60 ${label}`} style={d(0)}>
           Resolve Holding · Lebanon
         </p>
-        <h1 className="max-w-4xl font-display font-extrabold text-balance text-[2.75rem] leading-[1.05] tracking-tight sm:text-6xl lg:text-7xl">
+        <h1 className="max-w-[14ch] font-display font-extrabold text-[clamp(3rem,6.6vw,8rem)] leading-[0.98] tracking-[-0.035em]">
           <span className="rise">
             <span style={d(0)}>Technology,</span>
           </span>
@@ -54,7 +54,7 @@ export default function Home() {
           </span>
         </h1>
         <p
-          className="fade-in mt-8 max-w-xl text-base leading-7 text-white/60 sm:text-lg"
+          className="fade-in mt-10 max-w-2xl text-lg leading-8 text-white/60 sm:text-xl sm:leading-9"
           style={d(2)}
         >
           Resolve Holding is a privately owned group that develops and runs
@@ -64,12 +64,12 @@ export default function Home() {
         <div className="fade-in mt-12 flex flex-wrap items-center gap-4" style={d(3)}>
           <a
             href="#solutions"
-            className="inline-flex h-11 items-center gap-2 bg-white px-6 text-[13px] tracking-[0.16em] text-black transition-opacity hover:opacity-80"
+            className="inline-flex h-12 items-center gap-2 bg-white px-6 text-[0.875rem] tracking-[0.16em] text-black transition-opacity hover:opacity-80"
           >
             EXPLORE SOLUTIONS <span className="nudge" aria-hidden="true">↓</span>
           </a>
         </div>
-        <ul className="mt-16 flex flex-wrap gap-x-10 gap-y-4 text-[12px] tracking-[0.22em]">
+        <ul className="mt-16 flex flex-wrap gap-x-10 gap-y-4 text-[0.8125rem] tracking-[0.22em]">
           {solutions.map((solution, i) => (
             <li key={solution.slug} className="fade-in" style={d(4 + i)}>
               <Link
@@ -87,15 +87,15 @@ export default function Home() {
       <div className="h-px w-full bg-white/10" />
 
       {/* Solutions */}
-      <section id="solutions" className="mx-auto w-full max-w-6xl scroll-mt-16 px-6 py-24">
-        <div className="mb-16 flex flex-col justify-between gap-4 sm:flex-row sm:items-end">
+      <section id="solutions" className="wrap scroll-mt-[4.5rem] py-28 sm:py-40">
+        <div className="mb-20 flex flex-col justify-between gap-6 lg:flex-row lg:items-end">
           <div data-reveal>
             <p className={`mb-3 text-white/60 ${label}`}>Solutions</p>
-            <h2 className="font-display font-extrabold text-balance text-4xl tracking-tight sm:text-5xl">
+            <h2 className="max-w-[16ch] font-display font-extrabold text-balance text-[clamp(2.5rem,5.2vw,5.5rem)] leading-[1] tracking-[-0.03em]">
               Three solutions, one standard.
             </h2>
           </div>
-          <p data-reveal style={d(1)} className="max-w-sm text-sm leading-6 text-white/60">
+          <p data-reveal style={d(1)} className="max-w-md text-base leading-7 text-white/60 sm:text-lg sm:leading-8">
             Each solution is designed, built and run by our own team. All three
             are currently in development.
           </p>
@@ -111,27 +111,27 @@ export default function Home() {
             >
               <Link
                 href={`/solutions/${solution.slug}`}
-                className="card group flex h-full flex-col gap-8 p-8 transition-colors duration-300 hover:text-black focus-visible:text-black"
+                className="card group flex h-full min-h-[28rem] flex-col gap-10 p-8 sm:p-10 xl:p-12 transition-colors duration-300 hover:text-black focus-visible:text-black"
               >
-                <div className="flex items-center justify-between text-[12px] tracking-[0.22em] text-white/60 transition-colors duration-300 group-hover:text-black/60">
+                <div className="flex items-center justify-between text-[0.8125rem] tracking-[0.22em] text-white/60 transition-colors duration-300 group-hover:text-black/60">
                   <SolutionIcon
                     slug={solution.slug}
-                    className="card-icon h-7 w-7 text-white transition-colors duration-300 group-hover:text-black"
+                    className="card-icon h-9 w-9 text-white transition-colors duration-300 group-hover:text-black"
                   />
                   <span>{solution.status.toUpperCase()}</span>
                 </div>
                 <div>
-                  <p className="mb-3 text-[12px] tracking-[0.22em] text-white/60 transition-colors duration-300 group-hover:text-black/60">
+                  <p className="mb-3 text-[0.8125rem] tracking-[0.22em] text-white/60 transition-colors duration-300 group-hover:text-black/60">
                     {String(i + 1).padStart(2, "0")} · {solution.category.toUpperCase()}
                   </p>
-                  <h3 className="font-display font-bold text-3xl tracking-tight">
+                  <h3 className="font-display font-extrabold text-[clamp(2.25rem,3.4vw,3.5rem)] leading-none tracking-[-0.03em]">
                     {solution.title}
                   </h3>
-                  <p className="mt-4 max-w-md text-sm leading-6 text-white/60 transition-colors duration-300 group-hover:text-black/70">
+                  <p className="mt-5 max-w-md text-base leading-7 text-white/60 transition-colors duration-300 group-hover:text-black/70">
                     {solution.summary}
                   </p>
                 </div>
-                <span className="mt-auto text-[12px] tracking-[0.2em]">
+                <span className="mt-auto text-[0.8125rem] tracking-[0.2em]">
                   LEARN MORE <span className="card-arrow">→</span>
                 </span>
               </Link>
@@ -141,36 +141,36 @@ export default function Home() {
       </section>
 
       {/* About */}
-      <section id="about" className="scroll-mt-16 bg-white text-black">
-        <div className="mx-auto max-w-6xl px-6 py-24 sm:py-32">
+      <section id="about" className="scroll-mt-[4.5rem] bg-white text-black">
+        <div className="wrap py-28 sm:py-40">
           <div data-reveal>
             <p className={`mb-6 text-black/60 ${label}`}>About</p>
-            <h2 className="max-w-3xl font-display font-extrabold text-balance text-4xl leading-[1.1] tracking-tight sm:text-5xl">
+            <h2 className="max-w-[18ch] font-display font-extrabold text-balance text-[clamp(2.5rem,5.2vw,5.5rem)] leading-[1] tracking-[-0.03em]">
               Built here, for the way Lebanon works.
             </h2>
           </div>
-          <p data-reveal style={d(1)} className="mt-8 max-w-2xl text-base leading-7 text-black/60">
+          <p data-reveal style={d(1)} className="mt-10 max-w-3xl text-lg leading-8 text-black/60 sm:text-xl sm:leading-9">
             Resolve Holding is a privately owned company that brings practical
             technology to Lebanon. We build every solution ourselves, from the
             stations behind Voltbox to the software behind Cloak and
             Formula, so we control quality, security and support from end to
             end.
           </p>
-          <ul className="mt-16 grid border-t border-black/10 md:grid-cols-3">
+          <ul className="mt-20 grid border-t border-black/10 md:grid-cols-3">
             {principles.map((principle, i) => (
               <li
                 key={principle.title}
                 data-reveal
                 style={d(i)}
-                className="border-b border-black/10 py-8 md:border-r md:px-8 md:first:pl-0 md:last:border-r-0"
+                className="border-b border-black/10 py-10 md:border-r md:px-10 md:first:pl-0 md:last:border-r-0"
               >
-                <span className="text-[12px] tracking-[0.22em] text-black/60">
+                <span className="text-[0.8125rem] tracking-[0.22em] text-black/60">
                   {String(i + 1).padStart(2, "0")}
                 </span>
-                <h3 className="mt-4 font-display font-bold text-2xl tracking-tight">
+                <h3 className="mt-5 font-display font-bold text-[clamp(1.5rem,2.2vw,2.25rem)] leading-tight tracking-tight">
                   {principle.title}
                 </h3>
-                <p className="mt-3 text-sm leading-6 text-black/60">
+                <p className="mt-4 text-base leading-7 text-black/60">
                   {principle.body}
                 </p>
               </li>

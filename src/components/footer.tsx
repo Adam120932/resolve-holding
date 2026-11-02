@@ -3,8 +3,8 @@ import { Logo } from "@/components/logo";
 import { site } from "@/data/site";
 import { solutions } from "@/data/solutions";
 
-const heading = "text-[12px] tracking-[0.32em] text-white/60";
-const link = "text-[13px] text-white/70 transition-colors hover:text-white";
+const heading = "text-[0.8125rem] tracking-[0.32em] text-white/60";
+const link = "text-[0.875rem] text-white/70 transition-colors hover:text-white";
 
 export function Footer() {
   const year = new Date().getFullYear();
@@ -12,10 +12,10 @@ export function Footer() {
 
   return (
     <footer className="border-t border-white/10">
-      <div className="mx-auto grid max-w-6xl gap-10 px-6 py-12 sm:grid-cols-2 lg:grid-cols-[1.6fr_1fr_1fr_1fr]">
+      <div className="wrap grid gap-12 py-16 sm:grid-cols-2 lg:grid-cols-[1.6fr_1fr_1fr_1fr]">
         <div className="flex flex-col gap-3">
           <Logo className="text-white" />
-          <p className="text-[11px] tracking-[0.32em] text-white/60">
+          <p className="text-[0.75rem] tracking-[0.32em] text-white/60">
             {site.tagline.toUpperCase()}
           </p>
         </div>
@@ -62,7 +62,7 @@ export function Footer() {
         </div>
       </div>
       <div className="border-t border-white/10">
-        <p className="mx-auto max-w-6xl px-6 py-6 text-[12px] text-white/60">
+        <p className="wrap py-6 text-[0.8125rem] text-white/60">
           © {year} {site.name}. A privately owned company. All rights reserved.
         </p>
       </div>

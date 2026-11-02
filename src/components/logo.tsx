@@ -48,16 +48,16 @@ export function Logo({ className = "" }: LogoProps) {
   return (
     <span className={`inline-flex items-center gap-2 sm:gap-2.5 ${className}`}>
       <span className="sr-only">Resolve Holding</span>
-      <LogoMark className="h-[22px] w-auto sm:h-7" />
+      <LogoMark className="h-[1.4rem] w-auto sm:h-[1.9rem]" />
       <span
         aria-hidden="true"
         className="flex flex-col items-start gap-1 font-sans uppercase leading-none sm:flex-row sm:items-center sm:gap-3"
       >
-        <span className="mr-[-0.3em] text-[12px] font-semibold tracking-[0.3em] sm:mr-[-0.32em] sm:text-[14px] sm:tracking-[0.32em]">
+        <span className="mr-[-0.3em] text-[0.8125rem] font-semibold tracking-[0.3em] sm:mr-[-0.32em] sm:text-[1rem] sm:tracking-[0.32em]">
           Resolve
         </span>
         <span className="hidden h-4 w-px bg-current opacity-30 sm:block" />
-        <span className="mr-[-0.5em] text-[8px] font-medium tracking-[0.5em] opacity-75 sm:mr-[-0.32em] sm:text-[14px] sm:tracking-[0.32em]">
+        <span className="mr-[-0.5em] text-[0.5rem] font-medium tracking-[0.5em] opacity-75 sm:mr-[-0.32em] sm:text-[1rem] sm:tracking-[0.32em]">
           Holding
         </span>
       </span>

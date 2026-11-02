@@ -8,10 +8,10 @@ export function SolutionSwitcher({ current }: { current: string }) {
   return (
     <nav
       aria-label="Solutions"
-      className="sticky top-16 z-10 border-b border-white/10 bg-black/90 backdrop-blur-md"
+      className="sticky top-[4.5rem] z-10 border-b border-white/10 bg-black/90 backdrop-blur-md"
     >
-      <div className="mx-auto flex max-w-6xl items-stretch overflow-x-auto px-6">
-        <span className="hidden shrink-0 items-center pr-6 text-[11px] tracking-[0.28em] text-white/60 md:flex">
+      <div className="wrap flex items-stretch overflow-x-auto">
+        <span className="hidden shrink-0 items-center pr-6 text-[0.75rem] tracking-[0.28em] text-white/60 md:flex">
           SOLUTIONS
         </span>
         <ul className="flex items-stretch gap-1 sm:gap-2">
@@ -22,7 +22,7 @@ export function SolutionSwitcher({ current }: { current: string }) {
                 <Link
                   href={`/solutions/${solution.slug}`}
                   aria-current={active ? "page" : undefined}
-                  className={`-mb-px flex items-center gap-2 border-b-2 px-3 py-3.5 text-[13px] transition-colors ${
+                  className={`-mb-px flex items-center gap-2 border-b-2 px-3 py-3.5 text-[0.875rem] transition-colors ${
                     active
                       ? "border-white font-medium text-white"
                       : "border-transparent text-white/60 hover:text-white"

@@ -25,7 +25,7 @@ export async function generateMetadata({
 
 const d = (n: number) => ({ "--d": n }) as CSSProperties;
 
-const label = "text-[12px] tracking-[0.32em] uppercase";
+const label = "text-[0.8125rem] tracking-[0.32em] uppercase";
 
 export default async function SolutionPage({
   params,
@@ -42,13 +42,13 @@ export default async function SolutionPage({
   const isLive = solution.status === "Live";
 
   return (
-    <main className="flex-1 scroll-mt-16">
+    <main className="flex-1 scroll-mt-[4.5rem]">
       <SolutionSwitcher current={solution.slug} />
 
       {/* Intro */}
-      <section className="mx-auto max-w-6xl px-6 pt-12 pb-20 sm:pt-16">
+      <section className="wrap pt-14 pb-24 sm:pt-20 sm:pb-32">
         <nav aria-label="Breadcrumb">
-          <ol className="flex flex-wrap items-center gap-2 text-[12px] tracking-[0.2em] text-white/60">
+          <ol className="flex flex-wrap items-center gap-2 text-[0.8125rem] tracking-[0.2em] text-white/60">
             <li>
               <Link href="/" className="transition-colors hover:text-white">
                 HOME
@@ -74,13 +74,13 @@ export default async function SolutionPage({
             {solution.category} · {solution.status}
           </p>
         </div>
-        <h1 className="mt-6 font-display font-extrabold text-balance text-5xl tracking-tight sm:text-7xl">
+        <h1 className="mt-8 font-display font-extrabold text-balance text-[clamp(3.5rem,9vw,9.5rem)] leading-[0.95] tracking-[-0.04em]">
           {solution.title}
         </h1>
-        <p className="mt-6 text-[13px] tracking-[0.32em] text-white/80 uppercase">
+        <p className="mt-6 text-[0.875rem] tracking-[0.32em] text-white/80 uppercase">
           {solution.tagline}
         </p>
-        <p className="mt-10 max-w-2xl text-lg leading-8 text-white/60">
+        <p className="mt-10 max-w-3xl text-lg leading-8 text-white/60 sm:text-xl sm:leading-9">
           {solution.description}
         </p>
         <div className="mt-12 flex flex-wrap items-center gap-4">
@@ -89,7 +89,7 @@ export default async function SolutionPage({
               href={solution.preview.url}
               target="_blank"
               rel="noopener noreferrer"
-              className="group inline-flex h-11 items-center gap-3 bg-white px-6 text-[13px] tracking-[0.16em] text-black transition-opacity hover:opacity-80"
+              className="group inline-flex h-12 items-center gap-3 bg-white px-6 text-[0.875rem] tracking-[0.16em] text-black transition-opacity hover:opacity-80"
             >
               <span className="relative flex h-2 w-2" aria-hidden="true">
                 <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-black/60" />
@@ -101,7 +101,7 @@ export default async function SolutionPage({
           {solution.website && (
             <a
               href={solution.website.url}
-              className={`inline-flex h-11 items-center px-6 text-[13px] tracking-[0.16em] transition-colors ${
+              className={`inline-flex h-12 items-center px-6 text-[0.875rem] tracking-[0.16em] transition-colors ${
                 solution.preview
                   ? "border border-white hover:bg-white hover:text-black"
                   : "bg-white text-black hover:opacity-80"
@@ -112,7 +112,7 @@ export default async function SolutionPage({
           )}
           <a
             href="#how-it-works"
-            className={`inline-flex h-11 items-center px-6 text-[13px] tracking-[0.16em] transition-colors ${
+            className={`inline-flex h-12 items-center px-6 text-[0.875rem] tracking-[0.16em] transition-colors ${
               solution.website || solution.preview
                 ? "border border-white hover:bg-white hover:text-black"
                 : "bg-white text-black hover:opacity-80"
@@ -123,7 +123,7 @@ export default async function SolutionPage({
           </a>
         </div>
         {solution.preview && (
-          <p className="mt-4 text-[12px] tracking-[0.08em] text-white/50">
+          <p className="mt-4 text-[0.8125rem] tracking-[0.08em] text-white/50">
             {solution.preview.note}
           </p>
         )}
@@ -134,7 +134,7 @@ export default async function SolutionPage({
       {/* How it works */}
       <section
         id="how-it-works"
-        className="mx-auto max-w-6xl scroll-mt-32 px-6 py-20 sm:py-24"
+        className="wrap scroll-mt-32 py-24 sm:py-32"
       >
         <p className={`text-white/60 ${label}`}>
           {solution.stepsLabel ?? "How it works"}
@@ -147,13 +147,13 @@ export default async function SolutionPage({
               style={d(i)}
               className="border-b border-white/10 py-8 md:border-r md:px-8 md:first:pl-0 md:last:border-r-0"
             >
-              <span className="text-[12px] tracking-[0.22em] text-white/60">
+              <span className="text-[0.8125rem] tracking-[0.22em] text-white/60">
                 {String(i + 1).padStart(2, "0")}
               </span>
-              <h2 className="mt-4 font-display font-bold text-3xl tracking-tight">
+              <h2 className="mt-5 font-display font-extrabold text-[clamp(2rem,3.2vw,3.25rem)] leading-none tracking-[-0.03em]">
                 {step.title}
               </h2>
-              <p className="mt-3 text-sm leading-6 text-white/60">{step.body}</p>
+              <p className="mt-4 text-base leading-7 text-white/60">{step.body}</p>
             </li>
           ))}
         </ol>
@@ -161,7 +161,7 @@ export default async function SolutionPage({
 
       {/* What's included + who it's for */}
       <section className="bg-white text-black">
-        <div className="mx-auto grid max-w-6xl gap-16 px-6 py-20 sm:py-24 md:grid-cols-2">
+        <div className="wrap grid gap-16 py-24 sm:py-32 md:grid-cols-2 lg:gap-24">
           <div>
             <p className={`text-black/60 ${label}`}>What&apos;s included</p>
             <ul className="mt-8 border-t border-black/10">
@@ -180,7 +180,7 @@ export default async function SolutionPage({
           </div>
           <div data-reveal style={d(1)}>
             <p className={`text-black/60 ${label}`}>Who it&apos;s for</p>
-            <p className="mt-8 font-display font-semibold text-3xl leading-[1.2] tracking-tight">
+            <p className="mt-8 font-display font-semibold text-[clamp(1.75rem,3vw,3rem)] leading-[1.15] tracking-tight">
               {solution.audience}
             </p>
           </div>
@@ -189,7 +189,7 @@ export default async function SolutionPage({
 
       {/* Good to know */}
       {solution.faq && (
-        <section className="mx-auto max-w-6xl px-6 pt-20 sm:pt-24">
+        <section className="wrap pt-24 sm:pt-32">
           <p className={`text-white/60 ${label}`}>Good to know</p>
           <dl className="mt-10 grid border-t border-white/10 md:grid-cols-3">
             {solution.faq.map((item, i) => (
@@ -199,7 +199,7 @@ export default async function SolutionPage({
                 style={d(i)}
                 className="border-b border-white/10 py-8 md:border-r md:px-8 md:first:pl-0 md:last:border-r-0"
               >
-                <dt className="font-display text-xl font-bold tracking-tight">
+                <dt className="font-display text-2xl font-bold tracking-tight">
                   {item.question}
                 </dt>
                 <dd className="mt-3 text-sm leading-6 text-white/60">
@@ -212,11 +212,11 @@ export default async function SolutionPage({
       )}
 
       {/* Status and where to go next */}
-      <section className="mx-auto max-w-6xl px-6 py-20 sm:py-24">
-        <div data-reveal className="flex flex-col gap-8 border border-white/10 bg-black/50 p-8 backdrop-blur-[2px] sm:p-12 md:flex-row md:items-center md:justify-between">
+      <section className="wrap py-24 sm:py-32">
+        <div data-reveal className="flex flex-col gap-8 border border-white/10 bg-black/50 p-8 backdrop-blur-[2px] sm:p-14 md:flex-row md:items-center md:justify-between">
           <div>
             <p className={`text-white/60 ${label}`}>Status · {solution.status}</p>
-            <p className="mt-4 font-display text-3xl font-bold tracking-tight">
+            <p className="mt-4 font-display text-[clamp(2rem,3.2vw,3.25rem)] leading-none font-extrabold tracking-[-0.03em]">
               {solution.website
                 ? `${solution.title} has its own home.`
                 : isLive
@@ -232,7 +232,7 @@ export default async function SolutionPage({
           {solution.website && (
             <a
               href={solution.website.url}
-              className="inline-flex h-11 shrink-0 items-center self-start border border-white px-6 text-[13px] tracking-[0.16em] transition-colors hover:bg-white hover:text-black md:self-auto"
+              className="inline-flex h-12 shrink-0 items-center self-start border border-white px-6 text-[0.875rem] tracking-[0.16em] transition-colors hover:bg-white hover:text-black md:self-auto"
             >
               VISIT {solution.website.label.toUpperCase()} ↗
             </a>
@@ -242,13 +242,13 @@ export default async function SolutionPage({
         <div className="mt-16 flex flex-wrap items-center justify-between gap-6 border-t border-white/10 pt-10">
           <Link
             href="/#solutions"
-            className="text-[13px] tracking-[0.16em] text-white/60 hover:text-white"
+            className="text-[0.875rem] tracking-[0.16em] text-white/60 hover:text-white"
           >
             ← ALL SOLUTIONS
           </Link>
           <Link
             href={`/solutions/${next.slug}`}
-            className="text-[13px] tracking-[0.16em] hover:underline"
+            className="text-[0.875rem] tracking-[0.16em] hover:underline"
           >
             NEXT · {next.title.toUpperCase()} →
           </Link>
