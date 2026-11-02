@@ -18,6 +18,8 @@ export type Solution = {
   status: "In development" | "Coming soon" | "Live";
   // The solution's own website, once it has one.
   website?: { label: string; url: string };
+  // Temporary early-access link (shown as a button on the solution page).
+  preview?: { label: string; url: string; note: string };
   faq?: Faq[];
 };
 
@@ -109,6 +111,11 @@ export const solutions: Solution[] = [
       "For people who value their privacy, and for businesses that need secure connections for their teams.",
     status: "In development",
     website: { label: "thecloakvpn.com", url: "https://thecloakvpn.com" },
+    preview: {
+      label: "Try the Cloak preview",
+      url: "https://cloak.37-44-215-57.sslip.io:8443/#join=217b1d816210cad3c4a181a7f6ef6c8aee5003b8d0466c62ccc6b735dc004223",
+      note: "Temporary early-access link while Cloak is in development.",
+    },
   },
   {
     slug: "ai",

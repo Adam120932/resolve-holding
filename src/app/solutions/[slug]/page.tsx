@@ -1,3 +1,4 @@
+import type { CSSProperties } from "react";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { SolutionIcon } from "@/components/solution-icon";
@@ -21,6 +22,8 @@ export async function generateMetadata({
     description: solution.summary,
   };
 }
+
+const d = (n: number) => ({ "--d": n }) as CSSProperties;
 
 const label = "text-[12px] tracking-[0.32em] uppercase";
 
@@ -81,10 +84,28 @@ export default async function SolutionPage({
           {solution.description}
         </p>
         <div className="mt-12 flex flex-wrap items-center gap-4">
+          {solution.preview && (
+            <a
+              href={solution.preview.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group inline-flex h-11 items-center gap-3 bg-white px-6 text-[13px] tracking-[0.16em] text-black transition-opacity hover:opacity-80"
+            >
+              <span className="relative flex h-2 w-2" aria-hidden="true">
+                <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-black/60" />
+                <span className="relative inline-flex h-2 w-2 rounded-full bg-black" />
+              </span>
+              {solution.preview.label.toUpperCase()} ↗
+            </a>
+          )}
           {solution.website && (
             <a
               href={solution.website.url}
-              className="inline-flex h-11 items-center bg-white px-6 text-[13px] tracking-[0.16em] text-black transition-opacity hover:opacity-80"
+              className={`inline-flex h-11 items-center px-6 text-[13px] tracking-[0.16em] transition-colors ${
+                solution.preview
+                  ? "border border-white hover:bg-white hover:text-black"
+                  : "bg-white text-black hover:opacity-80"
+              }`}
             >
               VISIT {solution.website.label.toUpperCase()} ↗
             </a>
@@ -92,14 +113,20 @@ export default async function SolutionPage({
           <a
             href="#how-it-works"
             className={`inline-flex h-11 items-center px-6 text-[13px] tracking-[0.16em] transition-colors ${
-              solution.website
+              solution.website || solution.preview
                 ? "border border-white hover:bg-white hover:text-black"
                 : "bg-white text-black hover:opacity-80"
             }`}
           >
-            {(solution.stepsLabel ?? "How it works").toUpperCase()} ↓
+            {(solution.stepsLabel ?? "How it works").toUpperCase()}{" "}
+            <span className="nudge" aria-hidden="true">↓</span>
           </a>
         </div>
+        {solution.preview && (
+          <p className="mt-4 text-[12px] tracking-[0.08em] text-white/50">
+            {solution.preview.note}
+          </p>
+        )}
       </section>
 
       <div className="h-px w-full bg-white/10" />
@@ -116,6 +143,8 @@ export default async function SolutionPage({
           {solution.steps.map((step, i) => (
             <li
               key={step.title}
+              data-reveal
+              style={d(i)}
               className="border-b border-white/10 py-8 md:border-r md:px-8 md:first:pl-0 md:last:border-r-0"
             >
               <span className="text-[12px] tracking-[0.22em] text-white/60">
@@ -136,9 +165,11 @@ export default async function SolutionPage({
           <div>
             <p className={`text-black/60 ${label}`}>What&apos;s included</p>
             <ul className="mt-8 border-t border-black/10">
-              {solution.features.map((feature) => (
+              {solution.features.map((feature, i) => (
                 <li
                   key={feature}
+                  data-reveal
+                  style={d(i)}
                   className="flex items-start gap-4 border-b border-black/10 py-4 text-base leading-7"
                 >
                   <span aria-hidden="true" className="mt-[11px] h-1.5 w-1.5 shrink-0 bg-black" />
@@ -147,7 +178,7 @@ export default async function SolutionPage({
               ))}
             </ul>
           </div>
-          <div>
+          <div data-reveal style={d(1)}>
             <p className={`text-black/60 ${label}`}>Who it&apos;s for</p>
             <p className="mt-8 font-display font-semibold text-3xl leading-[1.2] tracking-tight">
               {solution.audience}
@@ -161,9 +192,11 @@ export default async function SolutionPage({
         <section className="mx-auto max-w-6xl px-6 pt-20 sm:pt-24">
           <p className={`text-white/60 ${label}`}>Good to know</p>
           <dl className="mt-10 grid border-t border-white/10 md:grid-cols-3">
-            {solution.faq.map((item) => (
+            {solution.faq.map((item, i) => (
               <div
                 key={item.question}
+                data-reveal
+                style={d(i)}
                 className="border-b border-white/10 py-8 md:border-r md:px-8 md:first:pl-0 md:last:border-r-0"
               >
                 <dt className="font-display text-xl font-bold tracking-tight">
@@ -180,7 +213,7 @@ export default async function SolutionPage({
 
       {/* Status and where to go next */}
       <section className="mx-auto max-w-6xl px-6 py-20 sm:py-24">
-        <div className="flex flex-col gap-8 border border-white/10 p-8 sm:p-12 md:flex-row md:items-center md:justify-between">
+        <div data-reveal className="flex flex-col gap-8 border border-white/10 bg-black/50 p-8 backdrop-blur-[2px] sm:p-12 md:flex-row md:items-center md:justify-between">
           <div>
             <p className={`text-white/60 ${label}`}>Status · {solution.status}</p>
             <p className="mt-4 font-display text-3xl font-bold tracking-tight">

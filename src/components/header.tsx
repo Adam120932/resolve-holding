@@ -16,6 +16,10 @@ export function Header() {
           </Link>
         </nav>
       </div>
+      <span
+        aria-hidden="true"
+        className="progress-line absolute bottom-[-1px] left-0 h-px w-full bg-white/70"
+      />
     </header>
   );
 }

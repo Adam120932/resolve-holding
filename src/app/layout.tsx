@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Archivo, Geist, Geist_Mono } from "next/font/google";
 import { Footer } from "@/components/footer";
 import { Header } from "@/components/header";
+import { Motion } from "@/components/motion";
 import { site } from "@/data/site";
 import "./globals.css";
 
@@ -37,10 +38,20 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       data-scroll-behavior="smooth"
       className={`${geistSans.variable} ${geistMono.variable} ${archivo.variable} h-full antialiased`}
     >
+      <head>
+        {/* Marks the page as scripted before paint, so reveal animations
+            only hide content when they can also show it again. */}
+        <script
+          dangerouslySetInnerHTML={{ __html: "document.documentElement.classList.add('js')" }}
+        />
+      </head>
       <body className="flex min-h-full flex-col bg-black text-white">
+        <Motion />
         <Header />
-        <div className="flex flex-1 flex-col">{children}</div>
-        <Footer />
+        <div className="relative z-[1] flex flex-1 flex-col">{children}</div>
+        <div className="relative z-[1]">
+          <Footer />
+        </div>
       </body>
     </html>
   );
