@@ -112,15 +112,15 @@ export const solutions: Solution[] = [
   },
   {
     slug: "ai",
-    shortName: "AI",
+    shortName: "Formula",
     index: "03",
-    title: "Voltbox AI",
+    title: "Formula Solutions",
     category: "AI & Automation",
     tagline: "Automation, on demand.",
     summary:
       "Custom AI automations for businesses, delivered through one simple API, from revenue reporting to everyday operations.",
     description:
-      "Voltbox AI is developed entirely in-house. It builds automations around a business, then gives full and easy access to them through a single API, so the work runs itself and the business stays in control.",
+      "Formula Solutions is developed entirely in-house. It builds automations around a business, then gives full and easy access to them through a single API, so the work runs itself and the business stays in control.",
     steps: [
       {
         title: "Define",
@@ -132,7 +132,7 @@ export const solutions: Solution[] = [
       },
       {
         title: "Connect",
-        body: "Everything is accessed through the Voltbox AI API, with full control over how and when it runs.",
+        body: "Everything is accessed through the Formula Solutions API, with full control over how and when it runs.",
       },
     ],
     features: [
