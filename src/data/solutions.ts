@@ -21,6 +21,19 @@ export type Solution = {
   // Temporary early-access link (shown as a button on the solution page).
   preview?: { label: string; url: string; note: string };
   faq?: Faq[];
+  // Products built on top of this solution (shown on its page).
+  projects?: Project[];
+};
+
+export type Project = {
+  slug: string;
+  name: string;
+  kind: string;
+  tagline: string;
+  description: string;
+  highlights: string[];
+  status: "In development" | "Coming soon" | "Live";
+  link?: { label: string; url: string; note: string };
 };
 
 export const solutions: Solution[] = [
@@ -113,7 +126,7 @@ export const solutions: Solution[] = [
     website: { label: "thecloakvpn.com", url: "https://thecloakvpn.com" },
     preview: {
       label: "Try the Cloak preview",
-      url: "https://cloak.37-44-215-57.sslip.io:8443/#join=217b1d816210cad3c4a181a7f6ef6c8aee5003b8d0466c62ccc6b735dc004223",
+      url: "/go/cloak-preview", // server-side redirect; the real link is in CLOAK_PREVIEW_URL
       note: "Temporary early-access link while Cloak is in development.",
     },
   },
@@ -125,7 +138,7 @@ export const solutions: Solution[] = [
     category: "AI & Automation",
     tagline: "Automation, on demand.",
     summary:
-      "Custom AI automations for businesses, delivered through one simple API, from revenue reporting to everyday operations.",
+      "Custom AI automations for businesses, delivered through one simple API. Also the engine behind our own products: Way, a car rental marketplace, and gym management software.",
     description:
       "Formula is developed entirely in-house. It builds automations around a business, then gives full and easy access to them through a single API, so the work runs itself and the business stays in control.",
     steps: [
@@ -153,6 +166,43 @@ export const solutions: Solution[] = [
     audience:
       "For businesses of any size that want to save time and see their numbers clearly, without building AI themselves.",
     status: "In development",
+    projects: [
+      {
+        slug: "way",
+        name: "Way",
+        kind: "Car rental marketplace",
+        tagline: "Rent a car in Lebanon, online.",
+        description:
+          "Way brings Lebanon's rental companies online. Every car listed is a real car from a licensed company with its own price, calendar and hand-over places, so renters compare, book and pick up without the back-and-forth. Companies run their fleet, bookings and earnings from one dashboard, with Formula handling the follow-ups and reports behind it.",
+        highlights: [
+          "Real cars from licensed rental companies",
+          "Live prices and availability, weekly and monthly rates",
+          "Instant booking or booking requests, in-app chat",
+          "Company dashboard: fleet, calendar, bookings, earnings",
+        ],
+        status: "In development",
+        link: {
+          label: "Open the Way preview",
+          url: "https://claude.ai/artifact/1XNBrvGxFB78fnX3UJ8ZSd",
+          note: "Preview with example companies and cars; no real bookings yet.",
+        },
+      },
+      {
+        slug: "gym",
+        name: "Gym software",
+        kind: "Gym management",
+        tagline: "Run the gym from one screen.",
+        description:
+          "Management software for gyms: members, plans and renewals, check-in at the door, class schedules, trainers, payments and clear numbers on revenue and attendance. Built for how gyms in Lebanon work, including cash payments and WhatsApp reminders. Name to be announced.",
+        highlights: [
+          "Members, plans and automatic renewal reminders",
+          "Door check-in with expiry alerts",
+          "Classes, bookings and trainers",
+          "Daily revenue and attendance reports",
+        ],
+        status: "In development",
+      },
+    ],
   },
 ];
 
