@@ -88,7 +88,7 @@ export default async function SolutionPage({
             <a
               href={solution.preview.url}
               target="_blank"
-              rel="noopener noreferrer"
+              rel="noopener noreferrer nofollow"
               className="group inline-flex h-12 items-center gap-3 bg-white px-6 text-[0.875rem] tracking-[0.16em] text-black transition-opacity hover:opacity-80"
             >
               <span className="relative flex h-2 w-2" aria-hidden="true">
@@ -112,7 +112,7 @@ export default async function SolutionPage({
           )}
           <a
             href="#how-it-works"
-            className={`inline-flex h-12 items-center px-6 text-[0.875rem] tracking-[0.16em] transition-colors ${
+            className={`inline-flex h-12 items-center gap-2 px-6 text-[0.875rem] tracking-[0.16em] transition-colors ${
               solution.website || solution.preview
                 ? "border border-white hover:bg-white hover:text-black"
                 : "bg-white text-black hover:opacity-80"
@@ -186,6 +186,74 @@ export default async function SolutionPage({
           </div>
         </div>
       </section>
+
+      {/* Projects built on this solution */}
+      {solution.projects && (
+        <section id="projects" className="wrap scroll-mt-32 pt-24 sm:pt-32">
+          <div data-reveal>
+            <p className={`text-white/60 ${label}`}>Built with {solution.title}</p>
+            <h2 className="mt-5 max-w-[18ch] font-display font-extrabold text-balance text-[clamp(2.25rem,4.2vw,4.5rem)] leading-[1] tracking-[-0.03em]">
+              Projects powered by {solution.title}.
+            </h2>
+          </div>
+          <ul className="mt-14 grid gap-px border-t border-white/10 md:grid-cols-2">
+            {solution.projects.map((project, i) => (
+              <li
+                key={project.slug}
+                data-reveal
+                style={d(i)}
+                className="border-b border-white/10 py-10 md:border-r md:px-10 md:first:pl-0 md:last:border-r-0"
+              >
+                <div className="flex items-center justify-between text-[0.8125rem] tracking-[0.22em] text-white/60">
+                  <span>
+                    {String(i + 1).padStart(2, "0")} · {project.kind.toUpperCase()}
+                  </span>
+                  <span>{project.status.toUpperCase()}</span>
+                </div>
+                <h3 className="mt-5 font-display font-extrabold text-[clamp(2rem,3.2vw,3.25rem)] leading-none tracking-[-0.03em]">
+                  {project.name}
+                </h3>
+                <p className="mt-3 text-[0.875rem] tracking-[0.2em] text-white/80 uppercase">
+                  {project.tagline}
+                </p>
+                <p className="mt-6 max-w-xl text-base leading-7 text-white/60">
+                  {project.description}
+                </p>
+                <ul className="mt-6 border-t border-white/10">
+                  {project.highlights.map((item) => (
+                    <li
+                      key={item}
+                      className="flex items-start gap-4 border-b border-white/10 py-3 text-sm leading-6 text-white/80"
+                    >
+                      <span aria-hidden="true" className="mt-[10px] h-1.5 w-1.5 shrink-0 bg-white" />
+                      {item}
+                    </li>
+                  ))}
+                </ul>
+                {project.link && (
+                  <div className="mt-8">
+                    <a
+                      href={project.link.url}
+                      target="_blank"
+                      rel="noopener noreferrer nofollow"
+                      className="inline-flex h-12 items-center gap-3 bg-white px-6 text-[0.875rem] tracking-[0.16em] text-black transition-opacity hover:opacity-80"
+                    >
+                      <span className="relative flex h-2 w-2" aria-hidden="true">
+                        <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-black/60" />
+                        <span className="relative inline-flex h-2 w-2 rounded-full bg-black" />
+                      </span>
+                      {project.link.label.toUpperCase()} ↗
+                    </a>
+                    <p className="mt-3 text-[0.8125rem] tracking-[0.08em] text-white/50">
+                      {project.link.note}
+                    </p>
+                  </div>
+                )}
+              </li>
+            ))}
+          </ul>
+        </section>
+      )}
 
       {/* Good to know */}
       {solution.faq && (
