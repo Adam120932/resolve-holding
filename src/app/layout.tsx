@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { Analytics } from "@vercel/analytics/next";
 import { Archivo, Geist, Geist_Mono } from "next/font/google";
 import { Footer } from "@/components/footer";
 import { Header } from "@/components/header";
@@ -52,6 +53,8 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         <div className="relative z-[1]">
           <Footer />
         </div>
+        {/* Vercel Web Analytics: cookieless visitor counts, shown in the Vercel dashboard. */}
+        <Analytics />
       </body>
     </html>
   );
